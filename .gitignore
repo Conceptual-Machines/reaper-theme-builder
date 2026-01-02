@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+._*
+
+# Build outputs (can be regenerated)
+*.ReaperThemeZip
+build/
+
+# Source themes (copyrighted/reference material)
+theme_source/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Temporary files
+*.tmp
+*.bak
+

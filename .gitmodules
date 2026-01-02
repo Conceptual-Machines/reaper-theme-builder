@@ -1,0 +1,3 @@
+[submodule "tools/cursor-talk-to-figma"]
+	path = tools/cursor-talk-to-figma
+	url = git@github.com:sonnylazuardi/cursor-talk-to-figma-mcp.git
