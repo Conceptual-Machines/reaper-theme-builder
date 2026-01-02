@@ -38,10 +38,10 @@ def main():
     print("=" * 50)
     
     steps = [
-        ("update_rtconfig.py", "Updating rtconfig.txt settings"),
-        ("create_sprites.py", "Creating transport icon sprites"),
-        ("create_track_sprites.py", "Creating track button sprites"),
-        ("build_theme.py", "Building and deploying theme"),
+        ("scripts/update_rtconfig.py", "Updating rtconfig.txt settings"),
+        ("scripts/create_sprites.py", "Creating transport icon sprites"),
+        ("scripts/create_track_sprites.py", "Creating track button sprites"),
+        ("scripts/build_theme.py", "Building and deploying theme"),
     ]
     
     for script, desc in steps:
