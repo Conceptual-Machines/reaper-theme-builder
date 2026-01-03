@@ -25,34 +25,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
-      - name: Download base theme
-        run: |
-          mkdir -p theme_source
-          
-          if [ -f "theme_source/LCS_Flat-7.ReaperThemeZip" ]; then
-            echo "Base theme already present"
-            exit 0
-          fi
-          
-          # Download from REAPER Stash
-          echo "Downloading LCS Flat 7 from REAPER Stash..."
-          curl -fL "https://stash.reaper.fm/38076/LCS%20Flat%207.ReaperThemeZip" \
-            -o theme_source/LCS_Flat-7.ReaperThemeZip
-      
-      - name: Extract base theme
-        run: |
-          cd theme_source
-          if [ ! -d "LCS_Flat-707_unpacked" ]; then
-            unzip -o LCS_Flat-7.ReaperThemeZip
-          fi
-      
       - name: Setup build directory
         run: |
           mkdir -p build
-          if [ ! -d "build/DarkMinimal_unpacked" ]; then
-            cp -r theme_source/LCS_Flat-707_unpacked build/DarkMinimal_unpacked
-            cp theme_source/LCS_Flat-707_unpacked.ReaperTheme build/DarkMinimal_unpacked.ReaperTheme
-          fi
+          cp -r theme_source/LCS_Flat-707_unpacked build/DarkMinimal_unpacked
+          cp theme_source/LCS_Flat-707_unpacked.ReaperTheme build/DarkMinimal_unpacked.ReaperTheme
       
       - name: Build theme
         run: python scripts/build_all.py
@@ -87,13 +64,6 @@ jobs:
       
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
-      - name: Download base theme
-        run: |
-          mkdir -p theme_source
-          curl -fL "https://stash.reaper.fm/38076/LCS%20Flat%207.ReaperThemeZip" \
-            -o theme_source/LCS_Flat-7.ReaperThemeZip
-          cd theme_source && unzip -o LCS_Flat-7.ReaperThemeZip
       
       - name: Setup and build
         run: |
