@@ -1,0 +1,96 @@
+{
+  "tcp": {
+    "description": "Track Control Panel (individual tracks)",
+    "fx_text": {
+      "source": "assets/fx/tcp_fx_text_*.png",
+      "output": [
+        "track_fx_norm.png",
+        "track_fx_dis.png",
+        "track_fx_empty.png",
+        "track_fx_in_norm.png",
+        "track_fx_in_empty.png"
+      ],
+      "overlays": [
+        "track_fx_norm_ol.png",
+        "track_fx_dis_ol.png",
+        "track_fx_empty_ol.png"
+      ]
+    },
+    "power_horizontal": {
+      "source": "assets/fx/tcp_fx_power_*.png",
+      "output": [
+        "track_fxon_h.png",
+        "track_fxoff_h.png",
+        "track_fxempty_h.png"
+      ],
+      "overlays": [
+        "track_fxon_h_ol.png",
+        "track_fxoff_h_ol.png",
+        "track_fxempty_h_ol.png"
+      ]
+    },
+    "power_vertical": {
+      "source": "assets/fx/tcp_fx_power_*.png",
+      "output": [
+        "track_fxon_v.png (transparent spacer)",
+        "track_fxoff_v.png (transparent spacer)",
+        "track_fxempty_v.png (transparent spacer)"
+      ],
+      "overlays": [
+        "track_fxon_v_ol.png",
+        "track_fxoff_v_ol.png",
+        "track_fxempty_v_ol.png"
+      ]
+    }
+  },
+  "mcp": {
+    "description": "Mixer Control Panel (mixer strips)",
+    "fx_text": {
+      "source": "LCS original (recolored)",
+      "lcs_files": [
+        "mcp_fx_norm.png",
+        "mcp_fx_dis.png",
+        "mcp_fx_empty.png",
+        "mcp_fx_in_norm.png",
+        "mcp_fx_in_empty.png"
+      ],
+      "output": "same as lcs_files"
+    },
+    "power_icon": {
+      "source": "LCS original (recolored)",
+      "lcs_files": [
+        "monitor_fx_byp_on.png",
+        "monitor_fx_byp_off.png",
+        "monitor_fx_byp_byp.png"
+      ],
+      "output": "same as lcs_files",
+      "note": "SHARED with master track power icon"
+    }
+  },
+  "master_track": {
+    "description": "Master track / Monitor FX section",
+    "fx_text_label": {
+      "source": "LCS original (NOT modified)",
+      "files": {
+        "monitor_fx_on.png": "MONITOR FX text - on state (teal)",
+        "monitor_fx_off.png": "MONITOR FX text - off state (gray)",
+        "monitor_fx_byp.png": "MONITOR FX text - bypass state (pink)"
+      },
+      "output": "copied from LCS unchanged"
+    },
+    "power_icon": {
+      "source": "LCS original (recolored)",
+      "files": {
+        "monitor_fx_byp_on.png": "power icon - on state",
+        "monitor_fx_byp_off.png": "power icon - off state", 
+        "monitor_fx_byp_byp.png": "power icon - bypass state"
+      },
+      "note": "SHARED with MCP - recoloring affects both"
+    }
+  },
+  "colors": {
+    "target_rgb": [70, 90, 120],
+    "description": "Blue-gray color for recoloring"
+  }
+}
+
