@@ -34,7 +34,7 @@ def check_assets():
     required_assets = [
         PROJECT_ROOT / "assets" / "transport" / "play_off.png",
         PROJECT_ROOT / "assets" / "transport" / "play_on.png",
-        PROJECT_ROOT / "assets" / "fx" / "tcp_fx_text_on.png",
+        # FX assets are now sourced from LCS theme (no custom assets needed)
     ]
     
     missing = [a for a in required_assets if not a.exists()]
@@ -142,7 +142,7 @@ def main():
     steps = [
         ("scripts/update_rtconfig.py", "Updating rtconfig.txt transport settings"),
         ("scripts/apply_colors.py", "Applying color palette"),
-        ("scripts/create_sprites.py", "Creating transport icon sprites"),
+        ("scripts/create_transport_sprites.py", "Creating transport icon sprites"),
         ("scripts/create_fx_sprites.py", "Creating FX button sprites"),
         ("scripts/build_theme.py", "Building and deploying theme"),
     ]
