@@ -9,13 +9,13 @@ import os
 from pathlib import Path
 
 # Paths
-SRC_DIR = Path(__file__).parent.parent / "src" / "transport"
+SRC_DIR = Path(__file__).parent.parent / "assets" / "transport"
 BUILD_DIR = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked"
 
-# Wider frames to prevent horizontal squashing
-FRAME_SIZE = (48, 42)
+# Square frames to maintain icon proportions
+FRAME_SIZE = (44, 44)  # Square for balanced icons
 # Gap between frames  
-FRAME_GAP = 4
+FRAME_GAP = 2
 
 
 def create_sprite_sheet(img, brightness_factors=(1.0, 1.1, 1.2)):

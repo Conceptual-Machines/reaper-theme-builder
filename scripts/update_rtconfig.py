@@ -10,11 +10,12 @@ RTCONFIG_PATH = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked" 
 
 # Transport bar settings
 TRANSPORT_HEIGHT = 48  # Default was 36
-BUTTON_WIDTH = 48      # Default was 28-32  
-BUTTON_HEIGHT = 42     # Default was 30
-BUTTON_SPACING = 4     # Extra spacing between buttons
-STATUS_WIDTH = 350     # Default was 450
-SECTION_WIDTH = 400    # Width for buttons section
+BUTTON_WIDTH = 44      # Square buttons
+BUTTON_HEIGHT = 44     # Square buttons
+BUTTON_SPACING = 2     # Tight spacing
+BUTTON_Y_OFFSET = 2    # Center vertically: (48-44)/2 = 2
+STATUS_WIDTH = 340     # Default was 450
+SECTION_WIDTH = 380    # Width for buttons section
 
 
 def update_rtconfig():
@@ -39,10 +40,10 @@ def update_rtconfig():
     for pattern, replacement in button_replacements:
         content = re.sub(pattern, replacement, content)
     
-    # Update sectionButtons: [transMargin y_offset width height]
+    # Update sectionButtons: [transMargin y_offset width height] - center vertically
     content = re.sub(
         r"(set trans\.custom\.sectionButtons\s+\+ \* Scale )\[transMargin \d+ \d+ \d+\]",
-        f"\\1[transMargin 3 {SECTION_WIDTH} {BUTTON_HEIGHT}]",
+        f"\\1[transMargin {BUTTON_Y_OFFSET} {SECTION_WIDTH} {BUTTON_HEIGHT}]",
         content
     )
     
@@ -63,6 +64,52 @@ def update_rtconfig():
     content = re.sub(
         r"(set trans\.size\.dockedheight\s+\* Scale )\[\d+\]",
         f"\\1[{TRANSPORT_HEIGHT}]",
+        content
+    )
+    
+    # Update sectionLeft height (used as reference)
+    content = re.sub(
+        r"(set trans\.custom\.sectionLeft\s+\* Scale )\[0 0 1000 \d+\]",
+        f"\\1[0 0 1000 {TRANSPORT_HEIGHT}]",
+        content
+    )
+    
+    # Update status section height - replace all 36 with TRANSPORT_HEIGHT in status lines
+    # Pattern: [transMargin 0 transStatusWidth{0} 36] -> [transMargin 0 transStatusWidth{0} 48]
+    content = re.sub(
+        r"(\[transMargin 0 transStatusWidth\{0\}) 36\]",
+        f"\\1 {TRANSPORT_HEIGHT}]",
+        content
+    )
+    # Pattern: [0 36 transStatusWidth{0} 36] -> [0 6 transStatusWidth{0} 36] (y-offset 6 to center 36 in 48)
+    content = re.sub(
+        r"\[0 36 transStatusWidth\{0\} 36\]",
+        f"[0 6 transStatusWidth{{0}} 36]",
+        content
+    )
+    # Update minmax height
+    content = re.sub(
+        r"(set trans\.size\.minmax\s+\* Scale \+ \[100) 36 (2000) 144\]",
+        f"\\1 {TRANSPORT_HEIGHT} \\2 {TRANSPORT_HEIGHT * 3}]",
+        content
+    )
+    
+    # Update right sections (BPM, Sig, Sel) - height from 36 to TRANSPORT_HEIGHT
+    # Pattern: transFollow trans.custom.sectionBpm 60 36 -> 60 48
+    content = re.sub(r"(transFollow trans\.custom\.sectionBpm\s+\d+) 36", f"\\1 {TRANSPORT_HEIGHT}", content)
+    content = re.sub(r"(transFollow trans\.custom\.sectionSig\s+\d+) 36", f"\\1 {TRANSPORT_HEIGHT}", content)
+    content = re.sub(r"(transFollow trans\.custom\.sectionSel\s+transSelectionWidth\{0\}) 36", f"\\1 {TRANSPORT_HEIGHT}", content)
+    
+    # Update previous reference for right sections
+    content = re.sub(r"(set previous\s+\+ \[w trans\.custom\.sectionRight\] \* Scale \[0 0 0) 36\]", f"\\1 {TRANSPORT_HEIGHT}]", content)
+    
+    # Update the conditional y-offset for right section
+    content = re.sub(r"(\[0 36\] \[0 transMargin)", f"[0 {TRANSPORT_HEIGHT}] [0 transMargin", content)
+    
+    # Update transport status background color - lighter (51,51,51 -> 70,70,70)
+    content = re.sub(
+        r"(\[0 0 0 0) 51 51 51 (255\])",
+        r"\1 70 70 70 \2",
         content
     )
     

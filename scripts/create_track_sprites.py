@@ -8,7 +8,7 @@ from PIL import Image, ImageEnhance
 from pathlib import Path
 
 # Paths
-ASSETS_DIR = Path(__file__).parent.parent / "assets" / "track_controls"
+ASSETS_DIR = Path(__file__).parent.parent / "assets" / "track"
 BUILD_DIR = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked"
 
 # Target size for each frame (REAPER track buttons are 20x20)

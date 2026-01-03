@@ -1,68 +1,111 @@
-# REAPER Theme Builder
+# DarkMinimal REAPER Theme Builder
 
-A toolkit for building custom REAPER themes using Figma for design.
+A custom dark theme for REAPER DAW with Material Icons transport bar and blue FX accents.
+
+## Features
+
+- **Custom Transport Bar**: Material Design icons (play, stop, record, etc.)
+- **Blue FX Indicators**: Custom TCP/MCP FX text and power icons
+- **Dark Color Palette**: Carefully tuned backgrounds and accents
+- **Figma Integration**: Design assets in Figma, export to theme
+
+## Quick Start
+
+### Prerequisites
+
+- Python 3.9+
+- Base theme: LCS Flat 7 (place in `theme_source/LCS_Flat-7.ReaperThemeZip`)
+
+### Local Build
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Build theme
+python scripts/build_all.py
+
+# Output: DarkMinimal.ReaperThemeZip
+```
+
+### Install Theme
+
+Copy `DarkMinimal.ReaperThemeZip` to your REAPER ColorThemes folder:
+- **macOS**: `~/Library/Application Support/REAPER/ColorThemes/`
+- **Windows**: `%APPDATA%\REAPER\ColorThemes\`
+- **Linux**: `~/.config/REAPER/ColorThemes/`
+
+Then in REAPER: **Options → Themes → Load theme...**
 
 ## Project Structure
 
 ```
-reaper-theme-builder/
-├── assets/                  # Figma exports (source images)
-│   ├── track_controls/      # Mute, Solo, Recarm buttons
-│   └── ...
-├── scripts/                 # Build scripts
-│   ├── build_all.py         # Master build script
-│   ├── build_theme.py       # Package and deploy
-│   ├── create_sprites.py    # Transport icon sprites
-│   ├── create_track_sprites.py  # Track button sprites
-│   └── update_rtconfig.py   # Theme config updates
-├── src/                     # Source files
-│   └── transport/           # Transport bar icons
-├── tools/                   # External tools (submodules)
-│   └── cursor-talk-to-figma/
-├── docs/                    # Documentation
-└── build/                   # Generated output (gitignored)
+├── assets/
+│   ├── transport/     # Transport bar icons (56x56 PNG)
+│   ├── fx/            # FX button assets
+│   └── track/         # Track control buttons
+├── scripts/
+│   ├── build_all.py       # Master build script
+│   ├── build_theme.py     # Package and deploy
+│   ├── create_sprites.py  # Generate transport sprites
+│   ├── create_fx_sprites.py
+│   ├── apply_colors.py    # Apply color palette
+│   └── update_rtconfig.py # Update layout settings
+├── theme_source/      # Base theme (not committed)
+├── build/             # Build output (not committed)
+└── .github/workflows/ # CI configuration
 ```
 
-## Setup
+## CI/CD
 
-### Prerequisites
-- Python 3.x with Pillow (`pip install Pillow`)
-- REAPER (for testing themes)
-- Figma account (for design)
+The project includes GitHub Actions workflow for automated builds:
 
-### Figma Integration
-1. Install the Figma plugin from `tools/cursor-talk-to-figma/`
-2. Run the WebSocket server: `cd tools/cursor-talk-to-figma && bun socket`
-3. Connect Cursor via MCP
+1. On push to `main`: Builds and uploads artifact
+2. On tag `v*`: Creates GitHub release with theme zip
 
-## Building
+### Required Secrets (optional)
 
-Run the full build:
-```bash
-python scripts/build_all.py
-```
-
-This will:
-1. Update rtconfig.txt settings
-2. Generate transport icon sprites
-3. Generate track button sprites
-4. Package and deploy to REAPER
-
-## Theme Design
-
-### Transport Bar
-- Icons exported at 56x56 from Figma
-- Converted to sprite sheets (3 states: normal, hover, active)
-- Configurable size via `update_rtconfig.py`
-
-### Track Controls
-- Mute (M), Solo (S), Recarm (R) buttons
-- Exported at 36x36 from Figma
-- Converted to 60x20 sprite sheets
+- `THEME_SOURCE_URL`: URL to download base theme (if not committed)
 
 ## Customization
 
-Edit the settings in `scripts/update_rtconfig.py`:
-- `TRANSPORT_HEIGHT` - Transport bar height
-- `BUTTON_WIDTH` / `BUTTON_HEIGHT` - Button dimensions
-- `STATUS_WIDTH` - Time display width
+### Colors
+
+Edit `scripts/apply_colors.py` to modify the color palette:
+
+```python
+PALETTE = {
+    "bg_deep": "#1a1a1a",
+    "bg_surface": "#242424",
+    "accent_blue": "#3b82fa",
+    # ...
+}
+```
+
+### Transport Icons
+
+1. Design icons in Figma (56x56, transparent background)
+2. Export to `assets/transport/` as `{name}_off.png` and `{name}_on.png`
+3. Run `python scripts/create_sprites.py`
+
+### FX Buttons
+
+1. Export from Figma to `assets/fx/`
+2. Run `python scripts/create_fx_sprites.py`
+
+## Figma Integration
+
+Install the Cursor-Talk-To-Figma MCP for live design:
+
+```bash
+cd tools/cursor-talk-to-figma
+bun install
+bun socket  # Start WebSocket server
+```
+
+Then connect from Figma using the plugin.
+
+## License
+
+Theme customizations: MIT
+Base theme (LCS Flat 7): See original license
