@@ -7,7 +7,6 @@
 build/
 
 # Source themes (copyrighted/reference material)
-theme_source/
 
 # Python
 __pycache__/
