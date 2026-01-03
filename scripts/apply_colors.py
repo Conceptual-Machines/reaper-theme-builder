@@ -30,6 +30,8 @@ PALETTE = {
     
     # Accent colors
     "accent_blue": "#3b82fa",
+    "accent_purple": "#A855F7",  # Electric Purple
+    "accent_coral": "#FF6B6B",   # Coral/salmon for loop area
     "danger_red": "#e53333",
     "mute_orange": "#ff9900",
     
@@ -116,6 +118,10 @@ COLOR_MAPPINGS = {
     "region_lane_bg": "bg_deep",
     "marker_lane_bg": "bg_deep",
     "ts_lane_bg": "bg_deep",
+    
+    # Loop/time selection area
+    "col_tl_bgsel": "accent_coral",
+    "col_tl_bgsel2": "accent_coral",
     
     # MIDI editor
     "midi_rulerbg": "bg_surface",
