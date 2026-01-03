@@ -8,14 +8,11 @@ Can be run locally or in CI.
 import subprocess
 import sys
 import shutil
-import zipfile
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
 THEME_SOURCE = PROJECT_ROOT / "theme_source"
 BUILD_DIR = PROJECT_ROOT / "build"
-LCS_ZIP = THEME_SOURCE / "LCS_Flat-7.ReaperThemeZip"
-LCS_UNPACKED = THEME_SOURCE / "LCS_Flat7_unpacked"
 
 
 def check_dependencies():
@@ -51,38 +48,13 @@ def check_assets():
 def setup_build_directory():
     """Setup build directory from base theme."""
     
-    # Check for base theme zip
-    if not LCS_ZIP.exists():
-        print(f"  ✗ Base theme not found: {LCS_ZIP}")
-        print("    Download LCS Flat 7 theme and place it in theme_source/")
-        return False
-    
-    # Try multiple possible locations for unpacked theme
-    possible_locations = [
-        (LCS_UNPACKED / "LCS_Flat-707_unpacked", LCS_UNPACKED / "LCS_Flat-707_unpacked.ReaperTheme"),
-        (THEME_SOURCE / "LCS_Flat-707_unpacked", THEME_SOURCE / "LCS_Flat-707_unpacked.ReaperTheme"),
-    ]
-    
-    theme_folder = None
-    theme_file = None
-    
-    for folder, file in possible_locations:
-        if folder.exists():
-            theme_folder = folder
-            theme_file = file
-            break
-    
-    # Extract if not found
-    if theme_folder is None:
-        print("  Extracting base theme...")
-        LCS_UNPACKED.mkdir(parents=True, exist_ok=True)
-        with zipfile.ZipFile(LCS_ZIP, 'r') as zf:
-            zf.extractall(LCS_UNPACKED)
-        theme_folder = LCS_UNPACKED / "LCS_Flat-707_unpacked"
-        theme_file = LCS_UNPACKED / "LCS_Flat-707_unpacked.ReaperTheme"
+    # The unpacked theme folder should be checked into the repo
+    theme_folder = THEME_SOURCE / "LCS_Flat-707_unpacked"
+    theme_file = THEME_SOURCE / "LCS_Flat-707_unpacked.ReaperTheme"
     
     if not theme_folder.exists():
-        print(f"  ✗ Expected folder not found: {theme_folder}")
+        print(f"  ✗ Base theme folder not found: {theme_folder}")
+        print("    The LCS theme source files should be checked into the repository.")
         return False
     
     # Setup build directory
