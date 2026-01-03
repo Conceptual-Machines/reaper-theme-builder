@@ -58,14 +58,32 @@ Then in REAPER: **Options → Themes → Load theme...**
 
 ## CI/CD
 
-The project includes GitHub Actions workflow for automated builds:
+The project uses GitHub Actions for automated builds and releases:
 
-1. On push to `main`: Builds and uploads artifact
-2. On tag `v*`: Creates GitHub release with theme zip
+### Workflow
 
-### Required Secrets (optional)
+1. **Feature branches**: Create a branch, make changes, open PR
+2. **Pull Request**: CI builds and uploads artifact for testing
+3. **Merge to main**: Automatically:
+   - Builds the theme
+   - Bumps patch version (0.1.0 → 0.1.1)
+   - Creates a GitHub release with the theme zip
+   - Tags the release (v0.1.1)
 
-- `THEME_SOURCE_URL`: URL to download base theme (if not committed)
+### Versioning
+
+- Version stored in `VERSION` file (semver: MAJOR.MINOR.PATCH)
+- Patch auto-incremented on each merge to main
+- Bump MINOR/MAJOR manually for significant changes
+
+### Manual Release
+
+To release a specific version:
+```bash
+echo "1.0.0" > VERSION
+git add VERSION && git commit -m "chore: bump to v1.0.0"
+git push
+```
 
 ## Customization
 
