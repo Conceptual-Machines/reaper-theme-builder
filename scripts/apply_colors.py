@@ -40,9 +40,9 @@ PALETTE = {
     "text_muted": "#808080",
     "text_dim": "#666666",
     
-    # Grid
-    "grid_major": "#444444",
-    "grid_minor": "#333333",
+    # Grid (brighter for visibility)
+    "grid_major": "#666666",
+    "grid_minor": "#4a4a4a",
     
     # VU Meter colors
     "meter_red": "#e53333",
@@ -95,10 +95,10 @@ COLOR_MAPPINGS = {
     "col_tl_fg": "text_muted",
     "col_tl_fg2": "text_dim",
     
-    # Cursor
-    "col_cursor": "accent_blue",
-    "col_cursor2": "accent_blue",
-    "playcursor_color": "accent_blue",
+    # Cursor (Electric Purple)
+    "col_cursor": "accent_purple",
+    "col_cursor2": "accent_purple",
+    "playcursor_color": "accent_purple",
     
     # Grid
     "col_gridlines": "grid_major",
