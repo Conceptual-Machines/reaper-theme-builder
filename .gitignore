@@ -19,6 +19,7 @@ venv/
 # IDE
 .idea/
 .vscode/
+.claude/
 *.swp
 
 # Temporary files
