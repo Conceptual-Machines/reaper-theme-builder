@@ -47,26 +47,26 @@ def check_assets():
 
 def setup_build_directory():
     """Setup build directory from base theme."""
-    
+
     # The unpacked theme folder should be checked into the repo
-    theme_folder = THEME_SOURCE / "LCS_Flat-707_unpacked"
-    theme_file = THEME_SOURCE / "LCS_Flat-707_unpacked.ReaperTheme"
-    
+    theme_folder = THEME_SOURCE / "Default_7.0_unpacked"
+    theme_file = THEME_SOURCE / "Default_7.0_unpacked.ReaperTheme"
+
     if not theme_folder.exists():
         print(f"  ✗ Base theme folder not found: {theme_folder}")
-        print("    The LCS theme source files should be checked into the repository.")
+        print("    The Default 7.0 theme source files should be in the theme_source directory.")
         return False
-    
+
     # Setup build directory
     build_unpacked = BUILD_DIR / "DarkMinimal_unpacked"
     build_theme = BUILD_DIR / "DarkMinimal_unpacked.ReaperTheme"
-    
+
     if not build_unpacked.exists():
         print("  Copying base theme to build directory...")
         BUILD_DIR.mkdir(parents=True, exist_ok=True)
         shutil.copytree(theme_folder, build_unpacked)
         shutil.copy2(theme_file, build_theme)
-    
+
     print("  ✓ Build directory ready")
     return True
 

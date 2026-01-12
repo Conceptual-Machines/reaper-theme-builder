@@ -30,7 +30,9 @@ PALETTE = {
     
     # Accent colors
     "accent_blue": "#3b82fa",
+    "accent_warm_blue": "#5B9FD4",  # Warm blue for cursor/envelopes
     "accent_purple": "#A855F7",  # Electric Purple
+    "accent_soft_purple": "#B38CD4",  # Soft purple for time selection
     "accent_coral": "#FF6B6B",   # Coral/salmon for loop area
     "danger_red": "#e53333",
     "mute_orange": "#ff9900",
@@ -95,10 +97,14 @@ COLOR_MAPPINGS = {
     "col_tl_fg": "text_muted",
     "col_tl_fg2": "text_dim",
     
-    # Cursor (Electric Purple)
-    "col_cursor": "accent_purple",
-    "col_cursor2": "accent_purple",
-    "playcursor_color": "accent_purple",
+    # Edit cursor (Bright blue for visibility)
+    "col_cursor": "accent_blue",
+    "col_cursor2": "accent_blue",
+
+    # Play cursor (Warm blue with triangle)
+    "playcursor_color": "accent_warm_blue",
+    "marquee_drawmode": "accent_warm_blue",  # Playhead cursor triangle
+    # Note: playcursor_drawmode is a mode flag, not a color - don't map it!
     
     # Grid
     "col_gridlines": "grid_major",
@@ -120,8 +126,8 @@ COLOR_MAPPINGS = {
     "ts_lane_bg": "bg_deep",
     
     # Loop/time selection area
-    "col_tl_bgsel": "accent_coral",
-    "col_tl_bgsel2": "accent_coral",
+    "col_tl_bgsel": "accent_soft_purple",
+    "col_tl_bgsel2": "accent_soft_purple",
     
     # MIDI editor
     "midi_rulerbg": "bg_surface",
@@ -130,6 +136,72 @@ COLOR_MAPPINGS = {
     "midi_trackbg_outer1": "bg_deep",
     "midi_trackbg_outer2": "bg_surface",
     "midi_leftbg": "bg_elevated",
+
+    # Track envelopes (warm blue)
+    "col_env1": "accent_warm_blue",
+    "col_env2": "accent_warm_blue",
+    "col_env3": "accent_warm_blue",
+    "col_env4": "accent_warm_blue",
+    "col_env5": "accent_warm_blue",
+    "col_env6": "accent_warm_blue",
+    "col_env7": "accent_warm_blue",
+    "col_env8": "accent_warm_blue",
+    "col_env9": "accent_warm_blue",
+    "col_env10": "accent_warm_blue",
+    "col_env11": "accent_warm_blue",
+    "col_env12": "accent_warm_blue",
+    "col_env13": "accent_warm_blue",
+    "col_env14": "accent_warm_blue",
+    "col_env15": "accent_warm_blue",
+    "col_env16": "accent_warm_blue",
+
+    # Folder/panel wiring
+    "wiring_parentwire_folder": "accent_warm_blue",
+
+    # Additional green colors to change to warm blue
+    "tcplocked_drawmode": "accent_warm_blue",
+    "playrate_edited": "accent_warm_blue",
+    "item_grouphl": "accent_warm_blue",
+    "col_stretchmarkerm": "accent_warm_blue",
+    "col_stretchmarker_tm": "accent_warm_blue",
+    "activetake_tag": "accent_warm_blue",
+    "mute_overlay_mode": "accent_warm_blue",
+    "inactive_take_overlay_mode": "accent_warm_blue",
+    "locked_overlay_mode": "accent_warm_blue",
+    "marqueezoom_outline": "accent_warm_blue",
+    "areasel_fill": "accent_warm_blue",
+    "areasel_outline": "accent_warm_blue",
+    "areasel_outlinemode": "accent_warm_blue",
+    "linkedlane_outlinemode": "accent_warm_blue",
+    "guideline_color": "accent_warm_blue",
+    "guideline_drawmode": "accent_warm_blue",
+    "col_routingact": "accent_warm_blue",
+
+    # Scrollbar and MIDI editor greens
+    "mcp_send_midihw": "accent_warm_blue",
+    "tcp_list_scrollbar_mouseover": "accent_warm_blue",
+    "tcp_list_scrollbar_mouseover_mode": "accent_warm_blue",
+    "mcp_list_scrollbar_mouseover": "accent_warm_blue",
+    "mcp_list_scrollbar_mouseover_mode": "accent_warm_blue",
+    "midi_gridhdm": "accent_warm_blue",
+    "midi_endpt": "accent_warm_blue",
+    "midi_ofsnsel": "accent_warm_blue",
+
+    # Remaining misc greens
+    "col_explorer_seldm": "accent_warm_blue",
+    "linkedlane_unsynced_mode": "accent_warm_blue",
+    "midi_editcurs": "accent_warm_blue",
+    "midifont_mode": "accent_warm_blue",
+    "midifont_mode_unsel": "accent_warm_blue",
+    "mouseitem_color": "accent_warm_blue",
+    "mouseitem_mode": "accent_warm_blue",
+    "wiring_activity": "accent_warm_blue",
+    "wiring_pin_connected": "accent_warm_blue",
+
+    # Note: col_vubot (VU meter green) intentionally kept green per user request
+
+    # Window pane resize handle
+    "col_main_resize2": "accent_warm_blue",
 }
 
 

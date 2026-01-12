@@ -7,6 +7,8 @@
 build/
 
 # Source themes (copyrighted/reference material)
+theme_source/AntiTheme/
+theme_source/LCS_Flat-707_unpacked/
 
 # Python
 __pycache__/
@@ -22,4 +24,7 @@ venv/
 # Temporary files
 *.tmp
 *.bak
+
+# User-specific deployment config
+deploy_config.py
 

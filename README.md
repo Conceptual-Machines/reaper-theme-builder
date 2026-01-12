@@ -22,15 +22,45 @@ A custom dark theme for REAPER DAW with Material Icons transport bar and blue FX
 # Install dependencies
 pip install -r requirements.txt
 
+# Configure deployment paths (optional)
+cp deploy_config.example.py deploy_config.py
+# Edit deploy_config.py to set your REAPER ColorThemes directories
+
 # Build theme
 python scripts/build_all.py
 
 # Output: DarkMinimal.ReaperThemeZip
 ```
 
-### Install Theme
+The build will automatically deploy to directories configured in `deploy_config.py`. If this file doesn't exist, the theme will only be created in the project root.
 
-Copy `DarkMinimal.ReaperThemeZip` to your REAPER ColorThemes folder:
+### Deployment Configuration
+
+Create `deploy_config.py` from the example file and customize paths for your system:
+
+```python
+from pathlib import Path
+
+DEPLOY_DIRS = [
+    # Portable REAPER
+    Path("/path/to/reaper-portable/ColorThemes"),
+
+    # System REAPER (macOS)
+    Path.home() / "Library/Application Support/REAPER/ColorThemes",
+
+    # System REAPER (Windows)
+    # Path.home() / "AppData/Roaming/REAPER/ColorThemes",
+
+    # System REAPER (Linux)
+    # Path.home() / ".config/REAPER/ColorThemes",
+]
+```
+
+**Note**: `deploy_config.py` is gitignored, so you can customize it for your local setup without affecting the repository.
+
+### Manual Install
+
+If not using auto-deployment, copy `DarkMinimal.ReaperThemeZip` to your REAPER ColorThemes folder:
 - **macOS**: `~/Library/Application Support/REAPER/ColorThemes/`
 - **Windows**: `%APPDATA%\REAPER\ColorThemes\`
 - **Linux**: `~/.config/REAPER/ColorThemes/`

@@ -5,6 +5,7 @@ Creates zip and deploys to REAPER ColorThemes folders.
 """
 
 import os
+import sys
 import shutil
 from pathlib import Path
 import zipfile
@@ -15,11 +16,15 @@ BUILD_DIR = PROJECT_ROOT / "build" / "DarkMinimal_unpacked"
 THEME_FILE = PROJECT_ROOT / "build" / "DarkMinimal_unpacked.ReaperTheme"
 OUTPUT_ZIP = PROJECT_ROOT / "DarkMinimal.ReaperThemeZip"
 
-# Deploy to BOTH portable and system REAPER
-DEPLOY_DIRS = [
-    Path("/Users/Luca_Romagnoli/Code/personal/ReaScript/reaper-portable/ColorThemes"),
-    Path.home() / "Library/Application Support/REAPER/ColorThemes",
-]
+# Load deployment configuration
+# Users should copy deploy_config.example.py to deploy_config.py and customize
+try:
+    # Add project root to path to import deploy_config
+    sys.path.insert(0, str(PROJECT_ROOT))
+    from deploy_config import DEPLOY_DIRS
+except ImportError:
+    # No deploy_config.py found - skip deployment
+    DEPLOY_DIRS = []
 
 
 def create_zip():
@@ -43,13 +48,23 @@ def create_zip():
 
 def deploy():
     """Copy zip to REAPER ColorThemes folders (portable + system)."""
+    if not DEPLOY_DIRS:
+        print("  ⚠ No deployment targets configured.")
+        print("  → Copy 'deploy_config.example.py' to 'deploy_config.py' and customize paths.")
+        return
+
+    deployed_count = 0
     for deploy_dir in DEPLOY_DIRS:
         if deploy_dir.exists():
             dest = deploy_dir / OUTPUT_ZIP.name
             shutil.copy2(OUTPUT_ZIP, dest)
             print(f"  ✓ {dest}")
+            deployed_count += 1
         else:
             print(f"  ⚠ Not found: {deploy_dir}")
+
+    if deployed_count == 0:
+        print("  ⚠ No valid deployment targets found. Check paths in deploy_config.py")
 
 
 def main():

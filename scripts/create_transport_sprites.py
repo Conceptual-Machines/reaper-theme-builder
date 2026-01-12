@@ -19,17 +19,18 @@ BUILD_DIR = PROJECT_ROOT / "build" / "DarkMinimal_unpacked"
 FRAME_WIDTH = 32
 FRAME_HEIGHT = 30
 
-# Mapping: (asset_name_off, asset_name_on) -> (reaper_name_off, reaper_name_on)
+# Mapping: (asset_name_off, asset_name_on) -> (reaper_name_off, reaper_name_on, reaper_name_off_explicit)
+# Third element is optional - if provided, creates an explicit _off variant
 TRANSPORT_MAPPINGS = {
-    ("play_off.png", "play_on.png"): ("transport_play.png", "transport_play_on.png"),
-    ("stop_off.png", "stop_on.png"): ("transport_stop.png", "transport_stop_on.png"),
-    ("pause_off.png", "pause_on.png"): ("transport_pause.png", "transport_pause_on.png"),
-    ("record_off.png", "record_on.png"): ("transport_record.png", "transport_record_on.png"),
-    ("rewind_off.png", "rewind_on.png"): ("transport_rew.png", "transport_rew_on.png"),
-    ("forward_off.png", "forward_on.png"): ("transport_fwd.png", "transport_fwd_on.png"),
-    ("prev_off.png", "prev_on.png"): ("transport_home.png", None),  # home = prev marker
-    ("next_off.png", "next_on.png"): ("transport_end.png", None),   # end = next marker
-    ("loop_off.png", "loop_on.png"): ("transport_repeat.png", "transport_repeat_on.png"),
+    ("play_off.png", "play_on.png"): ("transport_play.png", "transport_play_on.png", None),
+    ("stop_off.png", "stop_on.png"): ("transport_stop.png", "transport_stop_on.png", None),
+    ("pause_off.png", "pause_on.png"): ("transport_pause.png", "transport_pause_on.png", None),
+    ("record_off.png", "record_on.png"): ("transport_record.png", "transport_record_on.png", None),
+    ("rewind_off.png", "rewind_on.png"): ("transport_rew.png", "transport_rew_on.png", None),
+    ("forward_off.png", "forward_on.png"): ("transport_fwd.png", "transport_fwd_on.png", None),
+    ("prev_off.png", "prev_on.png"): ("transport_home.png", None, None),  # home = prev marker
+    ("next_off.png", "next_on.png"): ("transport_end.png", None, None),   # end = next marker
+    ("loop_off.png", "loop_on.png"): ("transport_repeat.png", "transport_repeat_on.png", "transport_repeat_off.png"),
 }
 
 
@@ -84,8 +85,12 @@ def save_with_dpi(img, base_path):
 
 def process_transport_sprites():
     """Create all transport sprites from Figma assets."""
-    
-    for (off_name, on_name), (reaper_off, reaper_on) in TRANSPORT_MAPPINGS.items():
+
+    for (off_name, on_name), mapping in TRANSPORT_MAPPINGS.items():
+        reaper_off = mapping[0]
+        reaper_on = mapping[1] if len(mapping) > 1 else None
+        reaper_off_explicit = mapping[2] if len(mapping) > 2 else None
+
         # Process OFF state
         off_path = ASSETS_DIR / off_name
         if off_path.exists():
@@ -93,9 +98,14 @@ def process_transport_sprites():
             sprite = create_sprite(img)
             save_with_dpi(sprite, BUILD_DIR / reaper_off)
             print(f"  ✓ {reaper_off}")
+
+            # Also create explicit _off variant if specified
+            if reaper_off_explicit:
+                save_with_dpi(sprite, BUILD_DIR / reaper_off_explicit)
+                print(f"  ✓ {reaper_off_explicit}")
         else:
             print(f"  ⚠ {off_name} not found")
-        
+
         # Process ON state (if it has one)
         if reaper_on:
             on_path = ASSETS_DIR / on_name

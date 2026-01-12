@@ -9,11 +9,11 @@ from pathlib import Path
 RTCONFIG_PATH = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked" / "rtconfig.txt"
 
 # Transport bar settings
-TRANSPORT_HEIGHT = 48  # Default was 36
-BUTTON_WIDTH = 44      # Square buttons
-BUTTON_HEIGHT = 44     # Square buttons
+TRANSPORT_HEIGHT = 40  # Medium size (default was 36)
+BUTTON_WIDTH = 36      # Square buttons
+BUTTON_HEIGHT = 36     # Square buttons
 BUTTON_SPACING = 2     # Tight spacing
-BUTTON_Y_OFFSET = 2    # Center vertically: (48-44)/2 = 2
+BUTTON_Y_OFFSET = 2    # Center vertically: (40-36)/2 = 2
 STATUS_WIDTH = 340     # Default was 450
 SECTION_WIDTH = 380    # Width for buttons section
 
