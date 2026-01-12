@@ -103,8 +103,7 @@ COLOR_MAPPINGS = {
 
     # Play cursor (Warm blue with triangle)
     "playcursor_color": "accent_warm_blue",
-    "marquee_drawmode": "accent_warm_blue",  # Playhead cursor triangle
-    # Note: playcursor_drawmode is a mode flag, not a color - don't map it!
+    # Note: *_drawmode and *_mode entries are flags, not colors - don't map them!
     
     # Grid
     "col_gridlines": "grid_major",
@@ -159,49 +158,35 @@ COLOR_MAPPINGS = {
     "wiring_parentwire_folder": "accent_warm_blue",
 
     # Additional green colors to change to warm blue
-    "tcplocked_drawmode": "accent_warm_blue",
     "playrate_edited": "accent_warm_blue",
     "item_grouphl": "accent_warm_blue",
     "col_stretchmarkerm": "accent_warm_blue",
     "col_stretchmarker_tm": "accent_warm_blue",
     "activetake_tag": "accent_warm_blue",
-    "mute_overlay_mode": "accent_warm_blue",
-    "inactive_take_overlay_mode": "accent_warm_blue",
-    "locked_overlay_mode": "accent_warm_blue",
     "marqueezoom_outline": "accent_warm_blue",
     "areasel_fill": "accent_warm_blue",
     "areasel_outline": "accent_warm_blue",
-    "areasel_outlinemode": "accent_warm_blue",
-    "linkedlane_outlinemode": "accent_warm_blue",
     "guideline_color": "accent_warm_blue",
-    "guideline_drawmode": "accent_warm_blue",
     "col_routingact": "accent_warm_blue",
 
     # Scrollbar and MIDI editor greens
     "mcp_send_midihw": "accent_warm_blue",
     "tcp_list_scrollbar_mouseover": "accent_warm_blue",
-    "tcp_list_scrollbar_mouseover_mode": "accent_warm_blue",
     "mcp_list_scrollbar_mouseover": "accent_warm_blue",
-    "mcp_list_scrollbar_mouseover_mode": "accent_warm_blue",
-    "midi_gridhdm": "accent_warm_blue",
     "midi_endpt": "accent_warm_blue",
     "midi_ofsnsel": "accent_warm_blue",
 
     # Remaining misc greens
-    "col_explorer_seldm": "accent_warm_blue",
-    "linkedlane_unsynced_mode": "accent_warm_blue",
     "midi_editcurs": "accent_warm_blue",
-    "midifont_mode": "accent_warm_blue",
-    "midifont_mode_unsel": "accent_warm_blue",
     "mouseitem_color": "accent_warm_blue",
-    "mouseitem_mode": "accent_warm_blue",
     "wiring_activity": "accent_warm_blue",
     "wiring_pin_connected": "accent_warm_blue",
 
-    # Note: col_vubot (VU meter green) intentionally kept green per user request
-
     # Window pane resize handle
     "col_main_resize2": "accent_warm_blue",
+
+    # Note: col_vubot (VU meter green) intentionally kept green per user request
+    # Note: All *_mode and *_drawmode entries are flags, not colors, and are excluded
 }
 
 
