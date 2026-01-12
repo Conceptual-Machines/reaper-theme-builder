@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Apply Figma color palette to REAPER theme config.
+Apply color palette to REAPER theme config.
 """
 
 import re
 from pathlib import Path
 
-THEME_PATH = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked.ReaperTheme"
+THEME_PATH = Path(__file__).parent.parent / "build" / "Default_7.0_DarkMinimal_unpacked.ReaperTheme"
 
 def hex_to_reaper(hex_color: str) -> int:
     """Convert hex color (#RRGGBB) to REAPER RGB decimal format"""

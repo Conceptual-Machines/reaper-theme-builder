@@ -10,7 +10,7 @@ from pathlib import Path
 
 # Paths
 SRC_DIR = Path(__file__).parent.parent / "assets" / "transport"
-BUILD_DIR = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked"
+BUILD_DIR = Path(__file__).parent.parent / "build" / "Default_7.0_DarkMinimal_unpacked"
 
 # Square frames to maintain icon proportions
 FRAME_SIZE = (44, 44)  # Square for balanced icons

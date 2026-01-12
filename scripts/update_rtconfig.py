@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Update rtconfig.txt settings for the DarkMinimal theme.
+Update rtconfig.txt settings for the Default 7.0 DarkMinimal theme.
 """
 
 import re
 from pathlib import Path
 
-RTCONFIG_PATH = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked" / "rtconfig.txt"
+RTCONFIG_PATH = Path(__file__).parent.parent / "build" / "Default_7.0_DarkMinimal_unpacked" / "rtconfig.txt"
 
 # Transport bar settings
 TRANSPORT_HEIGHT = 40  # Medium size (default was 36)

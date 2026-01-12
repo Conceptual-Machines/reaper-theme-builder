@@ -10,7 +10,7 @@ from PIL import Image
 import colorsys
 from pathlib import Path
 
-BUILD_DIR = Path(__file__).parent.parent / "build" / "DarkMinimal_unpacked"
+BUILD_DIR = Path(__file__).parent.parent / "build" / "Default_7.0_DarkMinimal_unpacked"
 
 # Target hue shift: green (120°) -> warm blue (205°)
 GREEN_HUE_MIN = 80 / 360   # ~80° in normalized 0-1 range

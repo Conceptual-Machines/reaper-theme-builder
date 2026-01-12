@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Master build script for DarkMinimal theme.
+Master build script for Default 7.0 DarkMinimal theme.
 Runs all build steps in the correct order.
 Can be run locally or in CI.
 """
@@ -58,8 +58,8 @@ def setup_build_directory():
         return False
 
     # Setup build directory
-    build_unpacked = BUILD_DIR / "DarkMinimal_unpacked"
-    build_theme = BUILD_DIR / "DarkMinimal_unpacked.ReaperTheme"
+    build_unpacked = BUILD_DIR / "Default_7.0_DarkMinimal_unpacked"
+    build_theme = BUILD_DIR / "Default_7.0_DarkMinimal_unpacked.ReaperTheme"
 
     if not build_unpacked.exists():
         print("  Copying base theme to build directory...")
@@ -94,7 +94,7 @@ def run_script(script_name, description):
 
 def main():
     print("=" * 50)
-    print("🎨 DarkMinimal Theme - Full Build")
+    print("🎨 Default 7.0 DarkMinimal Theme - Full Build")
     print("=" * 50)
     
     # Pre-flight checks
@@ -126,7 +126,7 @@ def main():
     
     print("\n" + "=" * 50)
     print("✓ Build complete!")
-    print(f"  Output: {PROJECT_ROOT / 'DarkMinimal.ReaperThemeZip'}")
+    print(f"  Output: {PROJECT_ROOT / 'Default_7.0_DarkMinimal.ReaperThemeZip'}")
     print("=" * 50)
 
 

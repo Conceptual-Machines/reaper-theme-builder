@@ -8,7 +8,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
 LCS_DIR = PROJECT_ROOT / "theme_source" / "LCS_Flat-707_unpacked"
-BUILD_DIR = PROJECT_ROOT / "build" / "DarkMinimal_unpacked"
+BUILD_DIR = PROJECT_ROOT / "build" / "Default_7.0_DarkMinimal_unpacked"
 
 # All FX-related files to copy from LCS
 FX_FILES = [

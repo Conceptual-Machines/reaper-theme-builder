@@ -13,7 +13,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).parent.parent
 ASSETS_DIR = PROJECT_ROOT / "assets" / "transport"
-BUILD_DIR = PROJECT_ROOT / "build" / "DarkMinimal_unpacked"
+BUILD_DIR = PROJECT_ROOT / "build" / "Default_7.0_DarkMinimal_unpacked"
 
 # Target frame size for transport buttons (matches LCS)
 FRAME_WIDTH = 32

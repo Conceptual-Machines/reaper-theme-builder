@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DarkMinimal Theme Builder
+Default 7.0 DarkMinimal Theme Builder
 Creates zip and deploys to REAPER ColorThemes folders.
 """
 
@@ -12,9 +12,9 @@ import zipfile
 
 # Paths
 PROJECT_ROOT = Path(__file__).parent.parent
-BUILD_DIR = PROJECT_ROOT / "build" / "DarkMinimal_unpacked"
-THEME_FILE = PROJECT_ROOT / "build" / "DarkMinimal_unpacked.ReaperTheme"
-OUTPUT_ZIP = PROJECT_ROOT / "DarkMinimal.ReaperThemeZip"
+BUILD_DIR = PROJECT_ROOT / "build" / "Default_7.0_DarkMinimal_unpacked"
+THEME_FILE = PROJECT_ROOT / "build" / "Default_7.0_DarkMinimal_unpacked.ReaperTheme"
+OUTPUT_ZIP = PROJECT_ROOT / "Default_7.0_DarkMinimal.ReaperThemeZip"
 
 # Load deployment configuration
 # Users should copy deploy_config.example.py to deploy_config.py and customize
@@ -40,7 +40,7 @@ def create_zip():
         for root, dirs, files in os.walk(BUILD_DIR):
             for file in files:
                 file_path = Path(root) / file
-                arc_name = f"DarkMinimal_unpacked/{file_path.relative_to(BUILD_DIR)}"
+                arc_name = f"Default_7.0_DarkMinimal_unpacked/{file_path.relative_to(BUILD_DIR)}"
                 zf.write(file_path, arc_name)
     
     print(f"Created: {OUTPUT_ZIP}")
