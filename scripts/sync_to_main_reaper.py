@@ -13,8 +13,14 @@ PORTABLE = Path.home() / "Dropbox/Code/Projects/ReaScript/reaper-portable"
 MAIN = Path.home() / "Library/Application Support/REAPER"
 
 def sync_file(src, dst, description):
-    """Sync a single file"""
+    """Sync a single file with backup"""
     try:
+        # Create backup if destination exists
+        if dst.exists():
+            backup = dst.with_suffix(dst.suffix + '.backup')
+            shutil.copy2(dst, backup)
+            print(f"  → Backed up to {backup.name}")
+
         shutil.copy2(src, dst)
         print(f"✓ {description}")
         return True
@@ -42,6 +48,10 @@ def sync_to_main():
     print("=" * 50)
 
     syncs = [
+        # Main config file (all settings)
+        (PORTABLE / "reaper.ini", MAIN / "reaper.ini",
+         "Main config (reaper.ini) - ALL SETTINGS"),
+
         # Keyboard shortcuts
         (PORTABLE / "reaper-kb.ini", MAIN / "reaper-kb.ini",
          "Keyboard shortcuts (reaper-kb.ini)"),
@@ -67,8 +77,11 @@ def sync_to_main():
     print("=" * 50)
     print("Sync complete!")
     print()
-    print("Note: Theme is already deployed by build_theme.py")
-    print("Note: reaper.ini settings must be manually merged")
+    print("✓ Theme is already deployed by build_theme.py")
+    print("✓ All settings copied from portable to main REAPER")
+    print()
+    print("⚠️  Backups saved as *.backup in case you need to restore")
+    print("⚠️  Close and restart REAPER to apply all changes")
     print()
 
 if __name__ == "__main__":
