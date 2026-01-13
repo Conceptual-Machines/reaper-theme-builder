@@ -34,6 +34,7 @@ PALETTE = {
     "accent_purple": "#A855F7",  # Electric Purple
     "accent_soft_purple": "#B38CD4",  # Soft purple for time selection
     "accent_coral": "#FF6B6B",   # Coral/salmon for loop area
+    "accent_orange": "#FF8C42",  # Bright orange for MIDI selection
     "danger_red": "#e53333",
     "mute_orange": "#ff9900",
     
@@ -41,10 +42,12 @@ PALETTE = {
     "text_primary": "#e0e0e0",
     "text_muted": "#808080",
     "text_dim": "#666666",
+    "text_status_blue": "#8a92a8",  # Slightly blueish grey for status text
     
     # Grid (brighter for visibility)
     "grid_major": "#666666",
     "grid_minor": "#4a4a4a",
+    "grid_midi_bright": "#999999",  # Even brighter for MIDI editor
     
     # VU Meter colors
     "meter_red": "#e53333",
@@ -62,7 +65,7 @@ COLOR_MAPPINGS = {
     
     # Transport
     "col_trans_bg": "bg_transport",
-    "col_trans_fg": "text_muted",
+    "col_trans_fg": "text_status_blue",
     "col_transport_editbk": "bg_deep",
     
     # Track backgrounds
@@ -84,7 +87,7 @@ COLOR_MAPPINGS = {
     # Toolbar
     "col_toolbar_text": "text_muted",
     "col_toolbar_text_on": "text_primary",
-    "toolbararmed_color": "danger_red",
+    "toolbararmed_color": "bg_elevated",  # Subtle highlight instead of red tint
     
     # VU Meters
     "col_vuclip": "meter_red",
@@ -135,6 +138,13 @@ COLOR_MAPPINGS = {
     "midi_trackbg_outer1": "bg_deep",
     "midi_trackbg_outer2": "bg_surface",
     "midi_leftbg": "bg_elevated",
+    "midi_selpitch1": "bg_elevated",  # Selected pitch row background
+    "midi_selpitch2": "bg_elevated",  # Selected pitch row alternate
+    "midi_grid1": "grid_midi_bright",  # Minor grid lines
+    "midi_grid3": "grid_midi_bright",  # Tertiary grid
+    "midi_gridh": "grid_midi_bright",  # Horizontal grid lines
+    "midi_gridhc": "grid_midi_bright",  # Horizontal center grid
+    "midi_selbg": "accent_coral",  # Selected note background
 
     # Track envelopes (warm blue)
     "col_env1": "accent_warm_blue",
