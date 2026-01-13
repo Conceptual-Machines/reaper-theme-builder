@@ -35,6 +35,7 @@ PALETTE = {
     "accent_soft_purple": "#B38CD4",  # Soft purple for time selection
     "accent_coral": "#FF6B6B",   # Coral/salmon for loop area
     "accent_orange": "#FF8C42",  # Bright orange for MIDI selection
+    "accent_electric_yellow": "#FFEA00",  # Electric yellow for MIDI note flash
     "danger_red": "#e53333",
     "mute_orange": "#ff9900",
     
@@ -144,7 +145,7 @@ COLOR_MAPPINGS = {
     "midi_grid3": "grid_midi_bright",  # Tertiary grid
     "midi_gridh": "grid_midi_bright",  # Horizontal grid lines
     "midi_gridhc": "grid_midi_bright",  # Horizontal center grid
-    "midi_selbg": "accent_coral",  # Selected note background
+    "midi_selbg": "accent_soft_purple",  # MIDI time selection background (matches arrange view)
 
     # Track envelopes (warm blue)
     "col_env1": "accent_warm_blue",
@@ -191,6 +192,9 @@ COLOR_MAPPINGS = {
     "mouseitem_color": "accent_warm_blue",
     "wiring_activity": "accent_warm_blue",
     "wiring_pin_connected": "accent_warm_blue",
+
+    # MIDI note flash
+    "midi_noteon_flash": "accent_electric_yellow",
 
     # Window pane resize handle
     "col_main_resize2": "accent_warm_blue",
